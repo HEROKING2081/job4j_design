@@ -1,26 +1,38 @@
 package ru.job4j.iterator;
 
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
-class ArrayItTest {
+import java.util.NoSuchElementException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+public class ArrayItTest {
+
     @Test
-    void whenMultiCallHasNextThenTrue() {
+    public void whenMultiCallhasNextThenTrue() {
         ArrayIt it = new ArrayIt(
                 new int[] {1, 2, 3}
         );
-        boolean rsl = it.hasNext();
-        assertThat(rsl).isTrue();
-        assertThat(true).isTrue();
+        assertThat(it.hasNext(), is(true));
+        assertThat(true, is(true));
     }
 
     @Test
-    void whenReadSequence() {
+    public void whenReadSequence() {
         ArrayIt it = new ArrayIt(
                 new int[] {1, 2, 3}
         );
-        assertThat(it.next()).isEqualTo(1);
-        assertThat(it.next()).isEqualTo(2);
-        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.next(), is(1));
+        assertThat(it.next(), is(2));
+        assertThat(it.next(), is(3));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenNextFromEmpty() {
+        ArrayIt it = new ArrayIt(
+                new int[] {}
+        );
+        it.next();
     }
 }
