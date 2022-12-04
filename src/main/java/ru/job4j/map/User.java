@@ -19,6 +19,7 @@ public class User {
     public static void main(String[] args) {
         Map<User, Object> map = new HashMap<>();
         Calendar birthday = Calendar.getInstance();
+        birthday.set(2000, Calendar.JANUARY, 25);
         User user1 = new User("Igor", 21, birthday);
         int hashCode1 = user1.hashCode();
         int hash1 = hashCode1 ^ (hashCode1 >>> 16);
@@ -57,8 +58,8 @@ public class User {
                 && Objects.equals(birthday, user.birthday);
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
         return Objects.hash(name, children, birthday);
-    }*/
+    }
 }
