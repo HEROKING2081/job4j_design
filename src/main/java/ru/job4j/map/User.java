@@ -54,8 +54,9 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return children == user.children && Objects.equals(name, user.name)
-                && Objects.equals(birthday, user.birthday);
+        return children == user.children &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(birthday, user.birthday);
     }
 
     @Override
