@@ -7,7 +7,7 @@ class ConfigTest {
 
     @Test
     public void whenComment() {
-        String path = "./app.propeties";
+        String path = "./app.properties";
         Config config = new Config(path);
         config.load();
         assertNull(config.value("key"));
