@@ -17,17 +17,15 @@ public class EchoServer {
                         System.out.println(str);
                         if (str.startsWith("GET /?")) {
                             String[] arguments = str.split("[= ]");
+                            out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                             if (arguments[2].equals("Exit")) {
-                                out.write("HTTP/1.1 200 CLOSED\r\n\r\n".getBytes());
                                 out.write("Sever closed.".getBytes());
                                 socket.close();
                                 server.close();
                                 break;
                             } else if (arguments[2].equals("Hello")) {
-                                out.write("HTTP/1.1 200 HELLO\r\n\r\n".getBytes());
                                 out.write("Hello, dear friend.".getBytes());
                             } else {
-                                out.write("HTTP/1.1 200 WHAT\r\n\r\n".getBytes());
                                 out.write("Illegal argument".getBytes());
                             }
                         }
