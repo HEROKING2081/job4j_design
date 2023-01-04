@@ -70,7 +70,6 @@ public class PreparedStatementDemo {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     cities.add(new City(
-                            resultSet.getInt("id"),
                             resultSet.getString("name"),
                             resultSet.getInt("population")
                     ));
